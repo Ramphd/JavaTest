@@ -18,7 +18,7 @@ public class ArrayUtil {
 	}
 	public static <T> void printArray(List<T> array) {
 
-		System.out.println("sort---result:" +array);
+		System.out.println("sorted-result:" +array);
 	}
 	public  static <T> void swap(List<T>array,int i,int j){
 		T temp = array.get(i);
