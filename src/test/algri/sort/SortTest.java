@@ -12,14 +12,11 @@ public class SortTest {
 		// TODO Auto-generated method stub
 		//bubbleSort method
 //		printArray(new SortMethods<Integer>(5).bubbleSort());
-//		printArray(new SortMethods<Integer>(10).selectSort());
-//		printArray(new SortMethods<Integer>(15).insertSort());
+//		printArray(new SortMethods<Integer>(7).selectSort());
+//		printArray(new SortMethods<Integer>(9).insertSort());
+//		printArray(new SortMethods<Integer>(11).shellSort());
+		printArray(new SortMethods<Integer>(13).quickSort());
 
-//		ArrayList<Integer> a = new ArrayList<Integer>(Arrays.asList(1,2,3,4));
-		int[] a = {1,2,3};
-		List<int[]> b =  Arrays.asList(a);
-		a[0] = 0;
-		System.out.println(b.get(0)[0]);
 	}
 
 }

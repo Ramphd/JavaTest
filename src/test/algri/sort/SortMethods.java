@@ -14,7 +14,7 @@ public class SortMethods<T> {
 	boolean done = false;// judge OK or NOT
 	
 	public SortMethods(int size) {//constructor method initiate members
-		this.array = (List<T>) createArrays(size);//initiate List
+		this.array = (List<T>) Arrays.asList(6,6,6,1,1,1,1);//initiate List
 		this.a = (T[]) array.toArray();//initiate array
 		this.length = a.length;
 	}
@@ -81,9 +81,60 @@ public class SortMethods<T> {
 				moves++;
 			}
 		}
-		System.out.println("moves:" + moves);
+		System.out.println("insert-moves:" + moves);
 		return Arrays.asList(a);
 	}
+	
+	public List<T> shellSort()  {
+		if(length > 1){
+			System.out.print("shell--origin:" + array);
+			for(int r = length/2;r >= 1 ;r/=2 ){
+				for(int i = r;i<length;i++){
+					T temp = a[i];
+					int j = i-r;
+					while(j >= 0 && compare(temp,a[j])<0){
+						a[j+r] = a[j];
+						j-=r;
+					}
+					a[j+r] = temp;
+				}
+				moves++;
+			}
+		}
+		System.out.println("shell-moves:" + moves);
+		return Arrays.asList(a);
+	}
+
+	public List<T> quickSort()  {
+		System.out.print("quick-origin:" + array);
+		quickSortDetail(0,length-1);
+		System.out.println("moves:" + moves);
+		return array;
+	}
+	private void quickSortDetail(int start ,int end){
+
+		if(length > 1){		
+			int left = start + 1;
+			int right = end;
+			T base_value = a[start];
+			while(true){
+				while(compare(base_value,a[right])<0) right--;
+				while(compare(base_value,a[left]) >0 && left < right) left++;
+				if(left >= right) break;
+				swapInt(a, left, right);
+				swap(array,left,right);
+				if(a[left] == base_value) right--;// very important steps to avoid 
+				else left++;					  //some same-value element
+				}
+			swapInt(a, start, right);
+			swap(array,start,right);
+			moves++;
+			if(start < left -1)	quickSortDetail(start, left -1);	
+			if(right+1 < end) quickSortDetail(right + 1, end);
+		}
+		
+	}
+	
 	private int compare(T x, T y) {
 		int a1 = (java.lang.Integer) x;
 		int a2 = (java.lang.Integer) y;
