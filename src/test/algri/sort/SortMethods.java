@@ -14,7 +14,7 @@ public class SortMethods<T> {
 	boolean done = false;// judge OK or NOT
 	
 	public SortMethods(int size) {//constructor method initiate members
-		this.array = (List<T>) Arrays.asList(6,6,6,1,1,1,1);//initiate List
+		this.array = (List<T>) createArrays(size);//initiate List
 		this.a = (T[]) array.toArray();//initiate array
 		this.length = a.length;
 	}
@@ -133,6 +133,46 @@ public class SortMethods<T> {
 			if(right+1 < end) quickSortDetail(right + 1, end);
 		}
 		
+	}
+	
+	public List<T> heapSort(){
+		System.out.print("heap---origin:" + array);
+		if(length > 1){
+			int heapSize = length;
+			maxHeapInit();
+			for(int i = length - 1;i>=1;i--){
+				swapInt(a, 0, i);
+				heapSize-=1;
+				buildMaxHeap(a, 0,heapSize);
+				moves++;
+			}
+		}
+		System.out.println("moves:" + moves);
+		return Arrays.asList(a);
+		
+	}
+	private void  maxHeapInit(){
+		for(int i = length>>1 -1 ; i>=0;i--){
+			buildMaxHeap(a,i,length);
+		}
+	}
+	private void buildMaxHeap(T[] a, int i,int size){
+		
+		int left_node = 2*i + 1;
+		int right_node = 2*i + 2;
+		int biggestIndex;
+		if(left_node < size && compare(a[left_node],a[i]) > 0){
+			biggestIndex = left_node;
+		}else{
+			biggestIndex = i;
+		}
+		if(right_node < size && compare(a[right_node],a[biggestIndex])>0){
+			biggestIndex = right_node;
+		}
+		if(biggestIndex != i){
+			swapInt(a, i, biggestIndex);
+			buildMaxHeap(a, biggestIndex,size);
+		}
 	}
 	
 	private int compare(T x, T y) {
