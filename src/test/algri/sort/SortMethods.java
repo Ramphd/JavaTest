@@ -138,12 +138,10 @@ public class SortMethods<T> {
 	public List<T> heapSort(){
 		System.out.print("heap---origin:" + array);
 		if(length > 1){
-			int heapSize = length;
 			maxHeapInit();
 			for(int i = length - 1;i>=1;i--){
 				swapInt(a, 0, i);
-				heapSize-=1;
-				buildMaxHeap(a, 0,heapSize);
+				buildMaxHeap(a, 0,i);// every iteration the length must minus 1
 				moves++;
 			}
 		}
@@ -174,7 +172,43 @@ public class SortMethods<T> {
 			buildMaxHeap(a, biggestIndex,size);
 		}
 	}
-	
+	public List<T> mergeSort(){
+		System.out.println("merge--origin:" + array);
+		if(length > 1){
+			mergeRecur(a,0,length-1);
+		}
+		return Arrays.asList(a);
+	}
+	private void mergeRecur(T[] list ,int l , int r){
+		if(l < r){
+			int mid = (l+r)/2;
+			mergeRecur(list,l,mid);
+			mergeRecur(list, mid+1, r);
+			mergeDetail(list,l,mid,r);
+		}
+	}
+	private void mergeDetail(T[] list,int l ,int mid,int r){
+		int num_ll = mid-l+1;//element numbs of left list
+		int num_rl = r-mid;//element numbs of right list
+		T[] l_temp = (T[]) new Object[num_ll]; 
+		T[] r_temp = (T[]) new Object[num_rl]; 
+		int i = 0 ; int j = 0;
+		for(;i< num_ll;i++)
+			l_temp[i] = list[l+i];
+		for(;j <num_rl;j++)
+			r_temp[j] = list[mid+j+1];
+		i=j=0;
+		for(int k = l ; k<=r;k++){
+			if(j==num_rl||i!=num_ll && compare(l_temp[i],r_temp[j])<=0){
+				list[k] = l_temp[i];
+				i++;
+			}else{
+				list[k] = r_temp[j];
+				j++;
+			}
+		}
+		moves++;
+	}
 	private int compare(T x, T y) {
 		int a1 = (java.lang.Integer) x;
 		int a2 = (java.lang.Integer) y;
