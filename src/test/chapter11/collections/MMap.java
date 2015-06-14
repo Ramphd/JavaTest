@@ -1,7 +1,5 @@
 package test.chapter11.collections;
 
-import java.util.*;
-
 public class MMap {
 
 	public static void main(String[] args) {

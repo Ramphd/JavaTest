@@ -21,7 +21,7 @@ public class Tuple {
 	static TwoTuple<String,Integer> f(){
 		return TTuple.tuple("hhi", 13123123);
 	}
-	static TwoTuple f2(){
+	static TwoTuple<String, String> f2(){
 		return TTuple.tuple("hhi2", "sdsdsd");
 	}
 	public static void main(String[] args) {
