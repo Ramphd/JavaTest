@@ -16,8 +16,7 @@ public class SortTest {
 //		printArray(new SortMethods<Integer>(9).insertSort());
 //		printArray(new SortMethods<Integer>(11).shellSort());
 //		printArray(new SortMethods<Integer>(13).quickSort());
-//		printArray(new SortMethods<Integer>(15).heapSort());
-		printArray(new SortMethods<Integer>(15).mergeSort());
+		printArray(new SortMethods<Integer>(10).heapSort());
 
 	}
 
