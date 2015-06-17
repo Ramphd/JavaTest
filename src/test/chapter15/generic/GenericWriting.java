@@ -28,8 +28,10 @@ public class GenericWriting {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Reader<Fruit> read = new Reader<Fruit>();
-		Fruit f = read.readExact(fruits);
-		Fruit a = read.readExact(apples);
+		System.out.println(read.readExact(fruits).getClass());
+		System.out.println(read.readExact(apples).getClass());
+		www(fruits);
+		
 		
 	}
 
