@@ -1,4 +1,4 @@
-package test.chapter9.abstractClass;
+package test.chapter09.abstractClass;
 
 public class Ex3 extends BaseClass {
 	
