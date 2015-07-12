@@ -5,16 +5,15 @@ import java.util.List;
 import java.util.Random;
 
 public class ArrayUtil {
-	Random rand = new Random(47);
 	public static List<Integer> createArrays(int initSize){
 //		this.initSize = initSize;
 		Integer[] array = new Integer[initSize];// init array space
-		Random rand = new Random(47);
+		Random rand = new Random();
 		// init array
 		for (int i = 0; i < initSize; i++) {
 			array[i] = rand.nextInt(99);
 		}
-		return Arrays.asList(array);
+		return Arrays.asList(6,6,6,6,6,58,2,5,4);
 	}
 	public static <T> void printArray(List<T> array) {
 

@@ -20,10 +20,10 @@ public class SortMethods<T> {
 		this.length = a.length;
 	}
 
-	public List<T> bubbleSort() {
+	public List<T> bubbleSort() {//O(N^2)
 		if (length > 1) {
 			System.out.print("bubble-origin:" + array);
-			for(int i = 1; i < length; i++) {
+			for(int i = 0; i < length - 1; i++) {
 				done = true;
 				++moves;
 				for (int j = 0; j < length - i; j++) {
@@ -44,7 +44,7 @@ public class SortMethods<T> {
 		return array;
 	}
 
-	public List<T> selectSort() {
+	public List<T> selectSort() {//O(N^2)
 	
 		if(length > 1){
 			int index = 0;
@@ -67,7 +67,7 @@ public class SortMethods<T> {
 		return array;
 	}
 
-	public List<T> insertSort() {
+	public List<T> insertSort() {// O(N^2)
 		if(length > 1){
 			System.out.print("insert-origin:" + array);
 			T insertValue;
@@ -124,9 +124,10 @@ public class SortMethods<T> {
 				if(left >= right) break;
 				swapInt(a, left, right);
 				swap(array,left,right);
-				if(a[left] == base_value) right--;// very important steps to avoid 
-				else left++;					  //some same-value element
-				}
+//				if(a[left] == base_value) right--;// very important steps to avoid 
+//				else left++;					  //some same-value element
+				left ++ ;// to void some same element ,jest like 6 6 6 6 5 2 4
+			}
 			swapInt(a, start, right);
 			swap(array,start,right);
 			moves++;
